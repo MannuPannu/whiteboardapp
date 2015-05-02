@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
-    "jquery-simplecolorpicker": "~0.3.0"
+    "jquery-simplecolorpicker": "~0.3.0",
+    "bootstrap": "~3.3.4"
   }
 }
