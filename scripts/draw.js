@@ -3,6 +3,13 @@ window.onload = function() {
 	var socket = io();
 	var canvas = document.getElementById("whiteboard");		 
 
+	//init the color picker
+  	$('select[name="colorpicker"]').simplecolorpicker('selectColor', '#7bd148').change(
+			function(e) {
+				var picker = $(e.target);
+				context.fillStyle = picker.val();
+			});	
+
 	//init canvas size
 	canvas.width = 1000;
 	canvas.height = 750;
