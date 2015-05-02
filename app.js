@@ -12,6 +12,6 @@ app.use(express.static(path.join(path.resolve(__dirname), '')));
 app.use('/', router);
 
 http.listen(8000, function(){
-  console.log('listening on *:6666');
+  console.log('listening on *:8000');
 });
 
