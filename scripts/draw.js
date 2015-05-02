@@ -1,4 +1,6 @@
 window.onload = function() {
+
+	var socket = io();
 	var canvas = document.getElementById("whiteboard");		 
 
 	//init canvas size
@@ -30,5 +32,14 @@ window.onload = function() {
 	
 	function draw(x, y) {
 		context.fillRect(x - 15, y - 30 , 10, 10);		
+	
+	 	socket.emit('drawing', {
+				x: x - 15,
+				y: y - 30
+		});	
 	};
+
+	socket.on('drawing', function(msg) {
+		context.fillRect(msg.x, msg.y, 10, 10);
+	});
 };
