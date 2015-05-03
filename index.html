@@ -7,16 +7,11 @@
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<link rel="stylesheet" href="bower_components/jquery-simplecolorpicker/jquery.simplecolorpicker.css">
-
-		<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>		
-		<script src="bower_components/jquery-simplecolorpicker/jquery.simplecolorpicker.js" type="text/javascript" charset="utf-8"></script>
-		<script src="scripts/draw.js" type="text/javascript" charset="utf-8"></script>
-		<script src="node_modules/socket.io-client/socket.io.js" type="text/javascript" charset="utf-8"></script>
 	</head>
-	<body>
+	<body style="margin: 15px">
 		A white board, please feel free to draw ! <br />
 
-		<canvas id="whiteboard" width="500" height="500" style="border-style: solid; border-width: 1px;">
+		<canvas id="whiteboard" style="border-style: solid; border-width: 1px;">
 		</canvas>
 
 		<select name="colorpicker">
@@ -35,6 +30,16 @@
 		</select>
 		
 		<button class="btn btn-primary" style="margin: 25px">Clear board</button>
+
+		<!-- Library scripts -->
+		<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>		
+		<script src="bower_components/jquery-simplecolorpicker/jquery.simplecolorpicker.js" type="text/javascript" charset="utf-8"></script>
+		<script src="node_modules/socket.io-client/socket.io.js" type="text/javascript" charset="utf-8"></script>
+
+		<!-- Our own scripts here -->
+		<script src="scripts/whiteboard.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/socket.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/main.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
 

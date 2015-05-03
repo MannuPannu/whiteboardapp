@@ -18,7 +18,6 @@ http.listen(8000, function(){
 });
 
 //Socket io config goes here
-
 io.on('connection', function(socket) {
 	console.log("a user connected");
 
