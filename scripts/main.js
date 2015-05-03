@@ -52,8 +52,6 @@ window.onload = function() {
 	});
 
 	socket.on('update', function(loggedInUsers){
-		console.log(loggedInUsers);
-		console.log($("#infolabel"));
 		$("#infolabel").html(loggedInUsers);		
 	})
 
