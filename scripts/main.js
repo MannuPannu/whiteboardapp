@@ -13,21 +13,23 @@ window.onload = function() {
 	canvas.addEventListener("mousedown", function(e) {
 		isDrawing = true;
 
-		whiteBoard.draw(e.clientX, e.clientY);
+		whiteBoard.draw(e.clientX, e.clientY, context.fillStyle);
 		
 	 	socket.emit('drawing', {
 				x: e.clientX,
-				y: e.clientY 
+				y: e.clientY,
+				color: context.fillStyle
 		});	
 	});
 
 	canvas.addEventListener("mousemove", function(e) {
 		if(isDrawing) {
-			whiteBoard.draw(e.clientX, e.clientY);
+			whiteBoard.draw(e.clientX, e.clientY, context.fillStyle);
 
 			socket.emit('drawing', {
 					x: e.clientX,
-					y: e.clientY 
+					y: e.clientY,
+					color: context.fillStyle
 			});	
 		}	
 	});
@@ -35,9 +37,18 @@ window.onload = function() {
 	canvas.addEventListener("mouseup", function() {
 			isDrawing = false;
 	});
+
+	$("#clearButton").on("click", function() {
+		socket.emit('clear');
+		whiteBoard.clear();
+	});
 	
 	socket.on('drawing', function(msg) {
-		whiteBoard.draw(msg.x, msg.y);
+		whiteBoard.draw(msg.x, msg.y, msg.color);
+	});
+	
+	socket.on('clear', function() {
+		whiteBoard.clear();
 	});
 
 	//init the color picker
@@ -46,4 +57,6 @@ window.onload = function() {
 				var picker = $(e.target);
 				context.fillStyle = picker.val();
 			});	
+
+	context.fillStyle = "#7bd148";
 };

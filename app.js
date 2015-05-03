@@ -19,10 +19,15 @@ http.listen(8000, function(){
 
 //Socket io config goes here
 io.on('connection', function(socket) {
-	console.log("a user connected");
+	// console.log("a user connected");
 
 	socket.on('drawing', function(msg) {
-		io.emit('drawing', msg);
+		socket.broadcast.emit('drawing', msg);
+	});
+
+	socket.on('clear', function() {
+		// console.log("clear");
+		socket.broadcast.emit('clear');
 	});
 
 	socket.on('disconnect', function(){
