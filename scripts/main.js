@@ -51,6 +51,12 @@ window.onload = function() {
 		whiteBoard.clear();
 	});
 
+	socket.on('update', function(loggedInUsers){
+		console.log(loggedInUsers);
+		console.log($("#infolabel"));
+		$("#infolabel").html(loggedInUsers);		
+	})
+
 	//init the color picker
   	$('select[name="colorpicker"]').simplecolorpicker('selectColor', '#7bd148').change(
 			function(e) {

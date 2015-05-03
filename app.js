@@ -17,9 +17,13 @@ http.listen(8000, function(){
   console.log('listening on *:8000');
 });
 
+var loggedInUsers = 0;
+
 //Socket io config goes here
 io.on('connection', function(socket) {
 	// console.log("a user connected");
+	loggedInUsers += 1;
+	io.emit('update', loggedInUsers);
 
 	socket.on('drawing', function(msg) {
 		socket.broadcast.emit('drawing', msg);
@@ -31,7 +35,10 @@ io.on('connection', function(socket) {
 	});
 
 	socket.on('disconnect', function(){
-    	console.log('user disconnected');
+    	// console.log('user disconnected');
+		loggedInUsers -= 1;
+
+		io.emit('update', loggedInUsers);
 	});
 });
 
