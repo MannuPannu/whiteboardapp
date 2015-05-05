@@ -17,30 +17,5 @@ http.listen(8000, function(){
   console.log('listening on *:8000');
 });
 
-var loggedInUsers = 0;
-
-//Socket io config goes here
-io.on('connection', function(socket) {
-	// console.log("a user connected");
-	loggedInUsers += 1;
-	io.emit('update', loggedInUsers);
-
-	socket.on('drawing', function(msg) {
-		socket.broadcast.emit('drawing', msg);
-	});
-
-	socket.on('clear', function() {
-		// console.log("clear");
-		socket.broadcast.emit('clear');
-	});
-
-	socket.on('disconnect', function(){
-    	// console.log('user disconnected');
-		loggedInUsers -= 1;
-
-		io.emit('update', loggedInUsers);
-	});
-});
-
 
 
