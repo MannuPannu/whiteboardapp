@@ -17,5 +17,17 @@ http.listen(8000, function(){
   console.log('listening on *:8000');
 });
 
+io.on('connection', function(socket) {
+    console.log("User connected");
+
+    socket.on('drawing', function(obj) {
+        socket.broadcast.emit('drawing', obj);
+    });
+
+    socket.on('disconnect', function() {
+        console.log("User disconnected");
+    });
+});
+
 
 
